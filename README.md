@@ -1,6 +1,6 @@
 # Supercharge
 
-Options to supercharge your zsh experience
+Sensible options to supercharge my zsh.
 
 - Auto CD into directory. Case insensitive, but also search for the match in the whole string.
   ![2022-11-10-21:55:28](https://user-images.githubusercontent.com/696094/201252866-6e85b62e-8753-45af-b16f-ae158918b28d.png)
@@ -10,3 +10,5 @@ Options to supercharge your zsh experience
 
 - Interactive Comments
   ![2022-11-10-21:56:21](https://user-images.githubusercontent.com/696094/201252994-62061a06-0115-4857-a6d5-e6a60c653ee0.png)
+
+- Adding to PATH common bin folders. (/bin, deno, local)
