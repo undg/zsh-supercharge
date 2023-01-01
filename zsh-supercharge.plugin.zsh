@@ -3,7 +3,13 @@ autoload -Uz plug
 # completions
 autoload -Uz compinit
 zstyle ':completion:*' menu yes select
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
+# Completion case insensitive, but also search for the match in the whole string
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z} l:|=* r:|=*'
+
+# Looks normal, I'm not sure about end of it.
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
 zmodload zsh/complist
 _comp_options+=(globdots)		# Include hidden files.
 zle_highlight=('paste:none')
@@ -37,41 +43,11 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
 # Colors
 autoload -Uz colors && colors
 
 # exports
 export PATH="$HOME/.local/bin:$PATH"
-
-# bindings
-bindkey -s '^x' '^usource ${ZDOTDIR:-$HOME}/.zshrc\n'
-bindkey -M menuselect '?' history-incremental-search-forward
-bindkey -M menuselect '/' history-incremental-search-backward
-
-# compinit
-
-# ls colors
-case "$(uname -s)" in
-
-Darwin)
-	# echo 'Mac OS X'
-	alias ls='ls -G'
-	;;
-
-Linux)
-	alias ls='ls --color=auto'
-	;;
-
-CYGWIN* | MINGW32* | MSYS* | MINGW*)
-	# echo 'MS Windows'
-	;;
-*)
-	# echo 'Other OS'
-	;;
-esac
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
 
